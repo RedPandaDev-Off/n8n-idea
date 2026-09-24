@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import './App.css'
 
 function App() {
   // 1. L'état qui contient la liste des idées
@@ -15,12 +16,17 @@ function App() {
 
   // 3. L'affichage
   return (
-    <div>
+    <div className="grille">
       <h1>App Idea</h1>
       {idees.map((idee) => (
-        <div key={idee.id}>
-          <p>Score : {idee.score}</p>
+        <div className="carte" key={idee.id}>
+          
           <p>{idee.resume}</p>
+          <p className="score">Score : {idee.score}</p>
+          <p>Categorie: {idee.categorie}</p>
+          <a href={idee.lien} target="_blank" rel="noopener noreferrer">Lien</a><br></br>
+          {idee.faisable_solo && <p>Oui faisable en solo</p>} 
+          <p>source : {idee.source}</p>
         </div>
       ))}
     </div>
